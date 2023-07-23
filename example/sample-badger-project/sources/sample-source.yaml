@@ -1,0 +1,3 @@
+---
+name: sample-source
+url: mongodb://mongodb:mongodb@localhost:27017

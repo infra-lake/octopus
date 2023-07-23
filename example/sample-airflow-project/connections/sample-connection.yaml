@@ -1,0 +1,11 @@
+conn_type: http
+connection_id: sample-connection
+description: This is a sample connection
+host: <put a connection host here>
+# login: string
+port: 443
+schema: https
+# extra: string
+# password: string
+
+# https://airbyte.com/blog/orchestrating-airbyte-api-airbyte-cloud-airflow

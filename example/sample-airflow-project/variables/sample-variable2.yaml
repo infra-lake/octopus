@@ -1,0 +1,3 @@
+description: This airflow variable stores the airbyte sample-connection id
+key: sample-variable2
+value: "{{ id 'airbyte' 'v1' 'connection' 'sample-connection' }}"

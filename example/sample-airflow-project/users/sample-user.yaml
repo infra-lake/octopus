@@ -1,0 +1,7 @@
+email: herberton@gmail.com
+first_name: Herberton
+last_name: Souza
+roles:
+- name: sample-role
+username: herberton
+password: "{{ env.AIRFLOW_USER_PASSWORD }}"

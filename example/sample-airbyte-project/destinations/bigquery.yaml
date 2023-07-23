@@ -1,0 +1,13 @@
+---
+configuration:
+  loading_method:
+    method: Standard
+  dataset_location: US
+  transformation_priority: interactive
+  big_query_client_buffer_size_mb: 15
+  destinationType: bigquery
+  project_id: poc-project2
+  dataset_id: pokemon
+  credentials_json: "{{ file '/etc/octagon/key.json' }}"
+name: bigquery
+workspaceId: "{{ workspace 'Learn to Fly - HML' }}"

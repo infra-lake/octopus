@@ -1,0 +1,1 @@
+{"version":"0.0.1","name":"octagon","dependencies":{"dotenv":{"version":"16.0.3"},"handlebars":{"version":"4.7.7"},"node-fetch":{"version":"3.3.1"},"promised-handlebars":{"version":"2.0.1"},"yaml":{"version":"2.3.1"}}}

@@ -1,0 +1,14 @@
+---
+configurations:
+  streams:
+  - name: <put your mongodb collection here>
+    syncMode: full_refresh_overwrite
+schedule:
+  scheduleType: manual
+dataResidency: auto
+namespaceDefinition: source
+namespaceFormat: "${SOURCE_NAMESPACE}"
+nonBreakingSchemaUpdatesBehavior: ignore
+sourceId: "{{ source 'mongodb2' }}"
+destinationId: "{{ destination 'bigquery' }}"
+name: sample-connection

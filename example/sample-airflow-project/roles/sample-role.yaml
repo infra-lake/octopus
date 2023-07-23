@@ -1,0 +1,6 @@
+name: sample-role
+actions:
+- action:
+    name: can_create
+  resource:
+    name: Variables

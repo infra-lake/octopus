@@ -1,0 +1,3 @@
+---
+name: sample-target
+credentials: {{ file '/etc/octagon/key.json' 'json' }}

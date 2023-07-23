@@ -1,0 +1,12 @@
+---
+configuration:
+  instance_type:
+    instance: atlas
+    cluster_url: <put your mongodb cluster url here>
+  auth_source: admin
+  sourceType: mongodb
+  database: <put your mongodb database name here>
+  user: "{{ env.MONGO_USR }}"
+  password: "{{ env.MONGO_PWD }}"
+name: mongodb2
+workspaceId: "{{ workspace 'Learn to Fly - HML' }}"
