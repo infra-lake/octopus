@@ -1,8 +1,8 @@
-# Octagon
+# Octopus
 
-Octagon is made to setup anything in a simple way.
+Octopus is made to setup anything in a simple way.
 
-See the docs at [https://infra-lake.github.io/octagon/](https://infra-lake.github.io/octagon/).
+See the docs at [https://infra-lake.github.io/octopus/](https://infra-lake.github.io/octopus/).
 
 ![logo](./docs/logo.png)
 
