@@ -16,7 +16,7 @@ At last the follow command can be executed:
 docker run -it --rm \
     -e MY_ENV=${MY_ENV} \ 
     -v ./project:/project \
-        infralake/octopus \
+        infralake/octopus:1.0.0 \
             path=/project \
             format=<format> \
             plugin=<plugin> \
