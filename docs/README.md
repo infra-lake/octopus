@@ -20,7 +20,7 @@ The basic lifecycle is:
 
 ![basic](./lifecycle-basic.png)
 
-The `plugin config` step sets the plugin helpers and load the plugin environmment variables, this step is most relevant for plugin developers. After that Octopus trigger the `plugin run` step that runs the [basic plugin run-lifecycle](#basic-plugin-run-lifecycle) steps.
+The `plugin config` step sets the plugin helpers and load the plugin environmment variables, this step is most relevant for plugin developers. After that Octopus trigger the `plugin run` step that runs the [basic plugin run lifecycle](#basic-plugin-run-step-lifecycle) steps.
 
 #### Basic Plugin Run Step Lifecycle
 
