@@ -13,15 +13,15 @@ To use Octopus, the first thing is to understand how does the [lifecycles](#life
 At last the follow command can be executed:
 
 ```bash
-	docker run -it --rm \
-		-e MY_ENV=${MY_ENV} \ 
-		-v ./project:/project \
-			octopus \
-				path=/project \
-				format=<format> \
-				plugin=<plugin> \
-				api=<api> \
-				recreate=<recreate>
+docker run -it --rm \
+    -e MY_ENV=${MY_ENV} \ 
+    -v ./project:/project \
+        infralake/octopus \
+            path=/project \
+            format=<format> \
+            plugin=<plugin> \
+            api=<api> \
+            recreate=<recreate>
 ```
 
 
