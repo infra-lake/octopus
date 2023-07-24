@@ -10,6 +10,21 @@ Octopus is completely written in JavaScript and uses the [Handlebars](https://gi
 
 To use Octopus, the first thing is to understand how does the [lifecycles](#lifecycles) works. After that, it is necessary to choose a [plugin](#plugin-list) and specify the plugin resources by writing configuration files. It is possible to use [helpers](#built-in-helpers) to write configuration files too.
 
+At last the follow command can be executed:
+
+```bash
+	docker run -it --rm \
+		-e MY_ENV=${MY_ENV} \ 
+		-v ./project:/project \
+			octopus \
+				path=/project \
+				format=<format> \
+				plugin=<plugin> \
+				api=<api> \
+				recreate=<recreate>
+```
+
+
 ### Lifecycles
 
 The main objective of defining the Octopus lifecycles is to make a standard operation, independent of each system and, at the same time, respecting its particularities. 

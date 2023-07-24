@@ -7,12 +7,12 @@ recreate?="false"
 
 .PHONY: sync
 sync: 
-	docker build -t octagon .
+	docker build -t octopus .
 	docker run -it --rm --network=host \
 		-v ./.env:/opt/app/.env \
-		-v ./example/volume:/etc/octagon \
+		-v ./example/volume:/etc/octopus \
 		-v ./example/sample-$(plugin)-project:/project \
-			octagon \
+			octopus \
 				path=/project \
 				plugin=$(plugin) \
 				format=$(format) \
