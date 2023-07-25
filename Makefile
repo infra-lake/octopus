@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := sync
 
-plugin?="airbyte"
+plugin?="badger"
 format?="yaml"
 api?="v1"
 recreate?="false"

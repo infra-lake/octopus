@@ -19,15 +19,17 @@ export async function load({ resource, name }) {
     log({ level:'info', message: `${resource}s loaded successfully` })
     log({ level:'info', message: `replacing ${resource}s variables` })
 
-    const resources = await Promise.all(
+    let resources = await Promise.all(
         fs
             .readdirSync(_path)
             .filter(filename => name ? filename === `${name}.${format}` : true)
             .map(filename => `${_path}/${filename}`)
             .map(file => fs.readFileSync(file, { encoding: 'utf-8' }))
-            .map(async data => await evaluate({ data }))
+            .flatMap(async data => await evaluate({ data }))
     )
-
+    
+    resources = resources.flatMap(resource => resource)
+    
     log({ level:'info', message: `${resource}s variables replaced successfully` })
 
     return resources

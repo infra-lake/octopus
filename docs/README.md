@@ -100,6 +100,7 @@ There are many default helpers that could be used on Octopus. Firstly, as Octopu
 |`env`|Used to read environment variables.|`{{ env.SOME_ENVIRONMENT_VARIABLE }}`|
 |`file`|Used to read content of files as a text.|`{{ file "/path/to/file.json" }}`|
 |`id`|Used to retrieve infrastructure id of some resource. It is important because some plugins define a natural key for a resource that create some artificial/surrogate/aleatory id. Sometimes is important to know what is the id of some resource to reference it in another configuration file.|`{{ id "some-plugin" "some-api-version" "some-resource" "some-resource-key" "some-extra-optional-filters" }}`|
+|`http_get`|Used to retrieve data from some http api.|`{{ http_get "http://some/url" "Bearer some-token" }}`|
 
 Each plugin could define another helpers that should be described on the plugin docs page.
 

@@ -1,15 +1,41 @@
 import { readFileSync } from 'fs'
 import Handlebars from 'handlebars'
+import yaml from 'js-yaml'
 import promisedHandlebars from 'promised-handlebars'
-import YAML from 'yaml'
 import { args } from '../cli/index.mjs'
+import { http } from '../http/index.mjs'
 import { debugging, log } from '../log/index.mjs'
 import { retrieve } from '../res/index.mjs'
 
 const PromisedHandlebars = promisedHandlebars(Handlebars, { Promise })
 
+PromisedHandlebars.registerHelper('http_get', async function (url, authz) {
+
+    const headers = {
+        'Accept': 'application/json'
+    }
+
+    if (typeof authz === 'string') {
+        headers['Authorization'] = authz
+    }
+    console.log({ url, headers })
+    const response = await http({
+        request: {
+            url,
+            info: { method: 'GET', headers }
+        }
+    })
+
+    const result = await response.json()
+    
+    return result
+
+})
+
 PromisedHandlebars.registerHelper('file', function (path, type = 'string', level = 0) {
+
     let data = undefined
+
     try {
         data = readFileSync(path, { encoding: 'utf-8' })
     } catch (error) {
@@ -19,12 +45,12 @@ PromisedHandlebars.registerHelper('file', function (path, type = 'string', level
         throw new Error(`does not found path "${path}"`)
     }
 
-    const _type = 
-        typeof type !== 'string' 
+    const _type =
+        typeof type !== 'string'
             ? 'string'
             : type
 
-    const _level = 
+    const _level =
         typeof level !== 'number'
             ? 0
             : level
@@ -87,7 +113,7 @@ export async function evaluate({ data }) {
 
     switch (format) {
         case 'json': return JSON.parse(result)
-        case 'yaml': return YAML.parse(result)
+        case 'yaml': return yaml.loadAll(result)
         default: throw new Error(`format ${format} was not implemented yet`)
     }
 

@@ -1,14 +1,14 @@
 {
   "name": "octagon",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The Octagon CLI",
   "main": "src/index.mjs",
   "author": "Herberton Candido Souza",
-  
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
     "handlebars": "^4.7.7",
+    "js-yaml": "^4.1.0",
     "node-fetch": "^3.3.1",
     "promised-handlebars": "^2.0.1",
     "yaml": "^2.3.1"

@@ -10,22 +10,22 @@ try {
 
     const { plugin } = args('plugin')
 
-    log({ message: `starting octagon`, args: args() })
+    log({ message: 'starting octopus', args: args() })
 
     const { config, run } = await import(`./plugins/${plugin}/index.mjs`)
 
     await config()
     
-    log({ message: `octagon started successfully` })
-    log({ message: `running octagon` })
+    log({ message: 'octopus started successfully' })
+    log({ message: 'running octopus' })
 
     await run()
 
-    log({ message: `octagon is finished successfully` })
+    log({ message: 'octopus is finished successfully' })
 
 } catch (error) {
 
-    log({ level:'error', message: 'error at sync', error })
+    log({ level: 'error', message: 'error at sync', error })
 
     if (debugging()) { throw error }
 
