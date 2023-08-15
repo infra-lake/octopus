@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs'
 import Handlebars from 'handlebars'
 import yaml from 'js-yaml'
+import YAML from 'yaml'
 import promisedHandlebars from 'promised-handlebars'
 import { args } from '../cli/index.mjs'
 import { http } from '../http/index.mjs'
@@ -65,12 +66,12 @@ PromisedHandlebars.registerHelper('file', function (path, type = 'string', level
 
         if (format === 'yaml') {
 
-            const yaml = _type === 'yaml' ? data : YAML.stringify(JSON.parse(data))
+            const _yaml = _type === 'yaml' ? data : YAML.stringify(JSON.parse(data))
 
             const indent = Array.from(Array(_level + 1).keys()).map(() => '  ').reduce((tabs, tab) => `${tabs}${tab}`, '')
 
-            const result = `\n${yaml.split('\n').map(row => `${indent}${row}`).reduce((content, row) => content ? `${content}\n${row}` : row)}`
-
+            const result = `\n${_yaml.split('\n').map(row => `${indent}${row}`).reduce((content, row) => content ? `${content}\n${row}` : row)}`
+            
             return result
 
         }
@@ -107,7 +108,7 @@ export async function evaluate({ data }) {
 
     format = args('format').format
 
-    const template = PromisedHandlebars.compile(data)
+    const template = PromisedHandlebars.compile(data, { noEscape: true })
 
     const result = await template({ env: process.env })
 

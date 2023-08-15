@@ -1,3 +1,3 @@
 ---
 name: sample-target
-credentials: {{ file '/etc/octagon/key.json' 'json' }}
+credentials: {{ file '/etc/octopus/key.json' 'json' }}

@@ -16,23 +16,31 @@ export async function id({ key: name }) {
 
 export async function get({ data }) {
 
-    const response = await http({
-        request: {
-            url: url({
-                path: '/settings/target',
-                query: { 'filter[name]': key({ data }) }
-            }),
-            info: { method: 'GET', headers: headers() }
+    try {
+        
+        const response = await http({
+            request: {
+                url: url({
+                    path: '/target',
+                    query: { 'filter[name]': key({ data }) }
+                }),
+                info: { method: 'GET', headers: headers() }
+            }
+        })
+    
+        const json = await response.json()
+    
+        if (json.metadata.count <= 0) {
+            return undefined
         }
-    })
+    
+        return json.results[0]
 
-    const json = await response.json()
-
-    if (json.metadata.count <= 0) {
-        return undefined
+    } catch (error) {
+        if ((error?.status ?? 0) === 404) { return undefined }
+        throw error
     }
-
-    return json.results[0]
+    
 
 }
 
@@ -49,7 +57,7 @@ async function save({ data }) {
 
     const response = await http({
         request: {
-            url: url({ path: '/settings/target' }),
+            url: url({ path: '/target' }),
             info: {
                 method: 'POST',
                 headers: headers(),
@@ -98,7 +106,7 @@ export async function del({ data }) {
 
     await http({
         request: {
-            url: url({ path: '/settings/target', query: { name: key({ data }) } }),
+            url: url({ path: '/target', query: { name: key({ data }) } }),
             info: { method: 'DELETE', headers: headers() }
         }
     })

@@ -8,6 +8,6 @@ configuration:
   destinationType: bigquery
   project_id: poc-project2
   dataset_id: pokemon
-  credentials_json: "{{ file '/etc/octagon/key.json' }}"
+  credentials_json: "{{ file '/etc/octopus/key.json' }}"
 name: bigquery
 workspaceId: "{{ workspace 'Learn to Fly - HML' }}"
