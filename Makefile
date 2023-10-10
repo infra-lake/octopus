@@ -2,7 +2,7 @@
 
 plugin?="badger"
 format?="yaml"
-api?="v1"
+api?="v3"
 recreate?="false"
 
 .PHONY: sync

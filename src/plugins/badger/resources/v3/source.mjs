@@ -17,30 +17,29 @@ export async function id({ key: name }) {
 export async function get({ data }) {
 
     try {
-        
+
         const response = await http({
             request: {
                 url: url({
-                    path: '/target',
-                    query: { 'filter[name]': key({ data }) }
+                    path: '/v3/source',
+                    query: { name: key({ data }) }
                 }),
                 info: { method: 'GET', headers: headers() }
             }
         })
-    
+
         const json = await response.json()
-    
-        if (json.metadata.count <= 0) {
+
+        if (json.length <= 0) {
             return undefined
         }
-    
-        return json.results[0]
+
+        return json[0]
 
     } catch (error) {
         if ((error?.status ?? 0) === 404) { return undefined }
         throw error
     }
-    
 
 }
 
@@ -57,7 +56,7 @@ async function save({ data }) {
 
     const response = await http({
         request: {
-            url: url({ path: '/target' }),
+            url: url({ path: '/v3/source' }),
             info: {
                 method: 'POST',
                 headers: headers(),
@@ -77,8 +76,8 @@ export async function del({ data }) {
     const response = await http({
         request: {
             url: url({
-                path: '/export',
-                query: { 'filter[target][name]': key({ data }) }
+                path: '/v3/export',
+                query: { source: key({ data }) }
             }),
             info: { method: 'GET', headers: headers() }
         }
@@ -86,16 +85,16 @@ export async function del({ data }) {
 
     const json = await response.json()
 
-    if (json.metadata.count > 0) {
-        await Promise.all(json.results.map(async ({ transaction, source, target }) => {
+    if (json.length > 0) {
+        await Promise.all(json.map(async ({ transaction, source, target }) => {
             await http({
                 request: {
                     url: url({
-                        path: '/export',
+                        path: '/v3/export',
                         query: {
                             transaction,
-                            'source[name]': source.name,
-                            'target[name]': target.name
+                            source: source.name,
+                            target: target.name
                         }
                     }),
                     info: { method: 'DELETE', headers: headers() }
@@ -106,7 +105,7 @@ export async function del({ data }) {
 
     await http({
         request: {
-            url: url({ path: '/target', query: { name: key({ data }) } }),
+            url: url({ path: `/v3/source/${key({ data })}` }),
             info: { method: 'DELETE', headers: headers() }
         }
     })

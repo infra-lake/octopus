@@ -1,3 +1,10 @@
 ---
 name: sample-source
-url: mongodb://mongodb:mongodb@localhost:27017
+url: mongodb://mongodb:mongodb@mongodb:27017
+filter:
+  ignoredCollections:
+    - collection1
+stamps:
+  id: _id
+  insert: created_at
+  update: updated_at
