@@ -1,6 +1,6 @@
 {
-  "name": "octagon",
-  "version": "1.0.2",
+  "name": "octopus",
+  "version": "1.0.3",
   "description": "The Octagon CLI",
   "main": "src/index.mjs",
   "author": "Herberton Candido Souza",
